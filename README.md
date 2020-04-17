@@ -1,31 +1,63 @@
-![Animated GIF of Pinetime demo](media/pixel-painting.gif)
+# mbed-pinetime
 
-# Getting Started
+![Animated GIF of Pinetime demo](doc/pixel-painting.gif)
 
-> These instructions are macOS centric right now, but the Mbed toolchain will work on Mac, Windows, and Linux. Improvments to these instructions are welcome. 
+## Getting Started
 
-Install the arm-eabi-none toolchain
-```
-brew tap PX4/homebrew-px4
-brew install PX4/homebrew-px4/gcc-arm-none-eabi-63
-```
+Install dependencies:
+
+- python3
+- c/c++ compiler, prefereable the GNU GCC compiler version 9
 
 Optionally, install `nrfjprog`
-```
-brew cask install nordic-nrf-command-line-tools
+
+- MAC:
+
+    ```bash
+    brew cask install nordic-nrf-command-line-tools
+    ```
+
+- Linux
+
+    TODO
+
+## Getting the source code
+
+```bash
+mbed import git@github.com:geoffrey-vl/mbed-pinetime.git
 ```
 
-Checkout all submodules `git submodule update --init --recursive`.
+You can off course also clone the repo manually using git, and next issue `mbed deploy`
+to pull the submodules.
+
+The mbed toolchain requires Python and some additional python packes which don't come
+with the default Python installation. To install the additional packages:
 
 Install all the Python packages required for Mbed. Your options are:
+
 - Install from the Pipfile. `pipenv install`
-- Install from Mbed requirements.txt `pip install -r modules/mbed-os/requirements.txt`
+- Install from Mbed requirements.txt `pip install -r mbed-os/requirements.txt`
 
-To use the Makefiles, you must set the environment variable `MBED_PINETIME_PATH` to the root of the repository. If anyone has ideas on how to not need this or otherwise improve the build system, let me know.
+## Compiling
 
+```bash
+mbed compile -t GCC_ARM
+```
 
+Note that the .mbed file has the mbed target fixed.
+A more complete command:
 
-# Development Notes
+```bash
+mbed compile -m PINETIME_DEV_KIT -t GCC_ARM
+```
+
+If you want to target the NRF52-DK board which is very similar to the PineTime use:
+
+```bash
+mbed compile -m NRF52_DK -t GCC_ARM
+```
+
+## Development Notes
 
 - [x] BMA421 Accelerometer
 - [-] HRS3300 Heart Rate Sensor
@@ -37,31 +69,38 @@ To use the Makefiles, you must set the environment variable `MBED_PINETIME_PATH`
 - [x] ADC Battery Voltage Sense
 - [ ] Physical button
 
-### I2C 
+### I2C
+
 00> 0x15 Touchpad
+
 - Only responds after a touch event.
 - At 100khz, Limit of read from register 0x00 after a touch event is 190-195ish bytes. This is probably due to the chip going back to sleep.
-	
+
 00> 0x18 ACK Accelerometer
+
 - BMA421 -- Not a public avalible chip, therefore no publicly availible drivers.
 - Similar to BMA423
 - Seems to require binary blob on startup (chip firmware?)
-	
+
 00> 0x44 ACK HALS3300 Heart Rate Sensor
+
 - Datasheet is OK
 - Resolution was set to 16bits 0x08
 - Gain was set to 1 0x02
 
 ### SPI
+
 Flash:
+
 - SPI flash is now working with Mbed SPIF driver
 - Needed to be "reset" by letting the battery die
 - 4194304 bytes
 
 Display:
+
 - Display needs mode 3 SPI?
 - https://www.allaboutcircuits.com/technical-articles/spi-serial-peripheral-interface/
-- Got it sort-of working with Mbed ports of the Adafruit GFX libraries. 
+- Got it sort-of working with Mbed ports of the Adafruit GFX libraries.
 - Still work to be done here
 
 I can't get the physical button to work for the life of me. Someone please help 😂
