@@ -10,7 +10,18 @@
       "spif-driver.SPI_CLK": "SPI_SCK",
       "spif-driver.SPI_CS": "SPI_CS_FLASH",
       "spif-driver.SPI_FREQ": "8000000",
-      "spif-driver.debug": 1
+      "spif-driver.debug": 1,
+      "mbed-lvgl.horizontal_res": 240,
+      "mbed-lvgl.vertical_res": 240,
+      "mbed-lvgl.display_dpi": 261,
+      "mbed-lvgl.color_depth": 16,
+      "mbed-lvgl.color_16_swap": 1,
+	    "mbed-lvgl.antialias": 0,
+	    "mbed-lvgl.use_theme_nemo": 1,
+	    "mbed-lvgl.enable_canvas": 0,
+	    "mbed-lvgl.enable_font_roboto_16": 0,
+	    "mbed-lvgl.enable_font_roboto_12": 1,
+	    "mbed-lvgl.default_font": "&lv_font_roboto_12"
     }
   }
 }

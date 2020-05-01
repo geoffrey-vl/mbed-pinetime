@@ -1,6 +1,6 @@
 # mbed-pinetime
 
-![Animated GIF of Pinetime demo](doc/pixel-painting.gif)
+![Pinetime demo](doc/pictureoritdidnthappen.jpg)
 
 ## Getting Started
 
@@ -59,48 +59,24 @@ mbed compile -m NRF52_DK -t GCC_ARM
 
 ## Development Notes
 
-- [x] BMA421 Accelerometer
-- [-] HRS3300 Heart Rate Sensor
-- [x] Hynitron CST816S Touch Pad
-- [-] Sitronix ST7789V LCD Driver
-- [x] Macronix SPI Flash
-- [x] Vibrator
+- [ ] BMA421 Accelerometer
+- [ ] HRS3300 Heart Rate Sensor
+- [ ] Hynitron CST816S Touch Pad
+- [x] Sitronix ST7789V LCD Driver
+- [ ] Macronix SPI Flash
+- [ ] Vibrator
 - [x] LED backlight
-- [x] ADC Battery Voltage Sense
+- [ ] ADC Battery Voltage Sense
 - [ ] Physical button
 
-### I2C
+## Flashing
 
-00> 0x15 Touchpad
+### Remove Flash protection
 
-- Only responds after a touch event.
-- At 100khz, Limit of read from register 0x00 after a touch event is 190-195ish bytes. This is probably due to the chip going back to sleep.
+For non-jlink program/debug probes you must first remove the Flash protection.
+Here is a good guide: [Advanced Topic: Remove nRF52 Flash Protection With Raspberry Pi](https://medium.com/@ly.lee/coding-nrf52-with-rust-and-apache-mynewt-on-visual-studio-code-9521bcba6004).
 
-00> 0x18 ACK Accelerometer
+### Flashing using OpenOcd and ST-LINK
 
-- BMA421 -- Not a public avalible chip, therefore no publicly availible drivers.
-- Similar to BMA423
-- Seems to require binary blob on startup (chip firmware?)
-
-00> 0x44 ACK HALS3300 Heart Rate Sensor
-
-- Datasheet is OK
-- Resolution was set to 16bits 0x08
-- Gain was set to 1 0x02
-
-### SPI
-
-Flash:
-
-- SPI flash is now working with Mbed SPIF driver
-- Needed to be "reset" by letting the battery die
-- 4194304 bytes
-
-Display:
-
-- Display needs mode 3 SPI?
-- https://www.allaboutcircuits.com/technical-articles/spi-serial-peripheral-interface/
-- Got it sort-of working with Mbed ports of the Adafruit GFX libraries.
-- Still work to be done here
-
-I can't get the physical button to work for the life of me. Someone please help 😂
+Here is a good guide on how to flash your Pinetime using an ST-Link probe: 
+[Flashing your PineTime using an ST-Link and OpenOCD]([https://link](https://dev.to/aaronc81/flashing-your-pinetime-using-an-st-link-and-openocd-54dd))
