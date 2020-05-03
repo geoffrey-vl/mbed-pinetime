@@ -3,7 +3,8 @@
 BacklightController::BacklightController() :
     mSlBrightnessLow(LCD_BACKLIGHT_LOW, 1),
     mSlBrightnessMid(LCD_BACKLIGHT_MID, 1),
-    mSlBrightnessHigh(LCD_BACKLIGHT_HIGH, 1)
+    mSlBrightnessHigh(LCD_BACKLIGHT_HIGH, 1),
+    mBrightness(Brightness::OFF)
 {
     //pins are active low!
 }
@@ -14,6 +15,7 @@ BacklightController::~BacklightController()
 
 void BacklightController::setBrightness(Brightness brightness)
 {
+    mBrightness = brightness;
     switch(brightness)
     {
         case Brightness::HIGH:

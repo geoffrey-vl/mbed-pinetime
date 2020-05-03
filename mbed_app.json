@@ -2,7 +2,7 @@
   "macros": [],
   "target_overrides": {
     "*": {
-      "mbed-trace.enable": 1
+      "mbed-trace.enable": 0
     },
     "PINETIME_DEV_KIT": {
       "spif-driver.SPI_MOSI": "SPI_MOSI",
@@ -10,7 +10,7 @@
       "spif-driver.SPI_CLK": "SPI_SCK",
       "spif-driver.SPI_CS": "SPI_CS_FLASH",
       "spif-driver.SPI_FREQ": "8000000",
-      "spif-driver.debug": 1,
+      "spif-driver.debug": 0,
       "mbed-lvgl.horizontal_res": 240,
       "mbed-lvgl.vertical_res": 240,
       "mbed-lvgl.display_dpi": 261,

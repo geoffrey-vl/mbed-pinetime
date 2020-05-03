@@ -13,12 +13,15 @@ public:
 
 private:
     lv_obj_t * icBatt;
+    lv_obj_t * lblBatt;
     lv_obj_t * lblTime;
     lv_obj_t * lblDay;
     time_t currentTime;
+    uint8_t vbattpc;
+    bool isCharging;
 
-    void setTxtTime();
-    void setTxtDate();
+    void setTxtDateTime();
+    void setTxtBattPc();
 };
 
 #endif // MAINWINDOW_H

@@ -16,11 +16,13 @@ public:
     BacklightController();
     virtual ~BacklightController();
 
+    Brightness brightness() { return mBrightness; }
     void setBrightness(Brightness brightness);
     
 private:
     mbed::DigitalOut mSlBrightnessLow;
     mbed::DigitalOut mSlBrightnessMid;
     mbed::DigitalOut mSlBrightnessHigh;
+    Brightness mBrightness;
 };
 #endif // BACKLIGHTCONTROLLER_H
