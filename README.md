@@ -66,8 +66,9 @@ mbed compile -m NRF52_DK -t GCC_ARM
 - [ ] Macronix SPI Flash
 - [ ] Vibrator
 - [x] LED backlight
-- [ ] ADC Battery Voltage Sense
-- [ ] Physical button
+- [x] ADC Battery Voltage Sense
+- [x] Physical button
+- [ ] BLE
 
 ## Flashing
 
@@ -78,5 +79,5 @@ Here is a good guide: [Advanced Topic: Remove nRF52 Flash Protection With Raspbe
 
 ### Flashing using OpenOcd and ST-LINK
 
-Here is a good guide on how to flash your Pinetime using an ST-Link probe: 
+Here is a good guide on how to flash your Pinetime using an ST-Link probe:
 [Flashing your PineTime using an ST-Link and OpenOCD]([https://link](https://dev.to/aaronc81/flashing-your-pinetime-using-an-st-link-and-openocd-54dd))
