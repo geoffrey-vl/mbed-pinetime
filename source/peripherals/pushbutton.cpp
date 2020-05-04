@@ -1,7 +1,7 @@
 #include "pushbutton.h"
 
 PushButton::PushButton(PinName buttonPin, PinName enablePin) :
-    button(buttonPin),
+    button(buttonPin, PullDown),
     btnEnable(enablePin, true)
 {
 }
