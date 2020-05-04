@@ -19,22 +19,18 @@ void initRtc() {
     time_t compile_time = UNIX_TIMESTAMP;
     
 	if(now < (compile_time-(24*60*60))) { //use 24 hour margin
-		printf("RTC illegal time, setting compile time: %d\n", (int)compile_time);
 		set_time(compile_time);
 	}
 }
 
 int main()
 {
-	printf("Init RTC...\r\n");
 	initRtc();
-	printf("Initializing LCD...\r\n");
 	lcd.init();
 	ThisThread::sleep_for(100);
 	lcd.display_on();
 	Peripherals::backlight.setBrightness(Brightness::HIGH);
 
-	printf("Creating MainWindow...\r\n");
 	MainWindow mainwindow(lcd);
 
 	bool isPushBtnHigh = Peripherals::pushButton.isHigh();
