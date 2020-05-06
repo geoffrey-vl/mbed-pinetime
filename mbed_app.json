@@ -1,5 +1,6 @@
 {
-  "macros": [],
+  "macros": [
+  ],
   "target_overrides": {
     "*": {
       "mbed-trace.enable": 0
@@ -20,7 +21,6 @@
 	    "mbed-lvgl.use_theme_nemo": 1,
 	    "mbed-lvgl.enable_canvas": 0,
       "mbed-lvgl.enable_font_roboto_16": 1,
-      "mbed-lvgl.enable_font_roboto_28": 1,
 	    "mbed-lvgl.default_font": "&lv_font_roboto_16"
     }
   }
