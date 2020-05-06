@@ -38,14 +38,13 @@ MainWindow::MainWindow(LVGLDisplayDriver& driver) :
 
     // battery icon
     icBatt = lv_label_create(lv_scr_act(), NULL);
-        /*
-        static lv_style_t lbl_style_pinetimefonts16;
-        lv_style_copy(&lbl_style_pinetimefonts16, &lv_style_plain);
-       lbl_style_pinetimefonts16.text.font = &lv_font_pinesymbols_16;  //Set a diferent font
-       lv_label_set_style(icBatt, LV_LABEL_STYLE_MAIN, &lbl_style_pinetimefonts16);
-       */
-	lv_obj_align(icBatt, NULL, LV_ALIGN_IN_TOP_RIGHT, 0, 0);  // Align to the top
+    static lv_style_t lbl_style_pinetimefonts16;
+    lv_style_copy(&lbl_style_pinetimefonts16, &lv_style_plain);
+    lbl_style_pinetimefonts16.text.font = &lv_font_pinesymbols_16;  //Set a diferent font
+    lv_label_set_style(icBatt, LV_LABEL_STYLE_MAIN, &lbl_style_pinetimefonts16);
+	lv_obj_align(icBatt, NULL, LV_ALIGN_IN_TOP_RIGHT, -25, 0);  // Align to the top
 	lv_obj_set_hidden(icBatt, false);
+    
     // battery percentage label
     lblBatt = lv_label_create(lv_scr_act(), NULL);
 	lv_obj_align(lblBatt, NULL, LV_ALIGN_IN_TOP_RIGHT, -40, 0);  // Align to the top
@@ -65,7 +64,7 @@ MainWindow::MainWindow(LVGLDisplayDriver& driver) :
 	lv_obj_set_hidden(lblTime, false);
     // date label
     lblDay = lv_label_create(lv_scr_act(), NULL);
-	lv_obj_align(lblDay, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);  //Align to the top
+	lv_obj_align(lblDay, NULL, LV_ALIGN_IN_BOTTOM_MID, -25, 0);  //Align to the top
 	lv_obj_set_hidden(lblDay, false);
     // draw calendar date and time
     setTxtDateTime();
@@ -113,16 +112,19 @@ void MainWindow::setTxtDateTime()
 void MainWindow::setTxtBattPc()
 {
     lv_label_set_text_fmt(lblBatt, "%02d%%", vbattpc);
-    if(vbattpc > 80)
-        lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_FULL);
-    else if(vbattpc > 60)
-        lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_3);
-    else if(vbattpc > 40)
-        lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_2);
-    else if(vbattpc > 20) {
-        lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_1);
-        //lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_3QUARTERS);
+
+    if(isCharging)
+        lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_CHARGING);
+    else {
+        if(vbattpc > 80)
+            lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_FULL);
+        else if(vbattpc > 60)
+            lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_3);
+        else if(vbattpc > 40)
+            lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_2);
+        else if(vbattpc > 20)
+            lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_1);
+        else
+            lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_EMPTY);
     }
-    else
-        lv_label_set_text_fmt(icBatt, LV_SYMBOL_BATTERY_EMPTY);
 }
