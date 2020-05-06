@@ -1,2 +1,8 @@
 apps/*
 drivers/*
+mbed-os/features/cellular/*
+mbed-os/features/lwipstack/*
+mbed-os/features/lorawan/*
+mbed-os/features/netsocket/*
+mbed-os/features/nfc/*
+mbed-os/features/nanostack/*
