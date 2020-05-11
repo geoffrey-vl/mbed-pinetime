@@ -1,13 +1,13 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef DIGITALCLOCKWINDOW_H
+#define DIGITALCLOCKWINDOW_H
 
 #include "basewindow.h"
 
-class MainWindow : public BaseWindow
+class DigitalClockWindow : public BaseWindow
 {
 public:
-    MainWindow(LVGLDisplayDriver& driver);
-    virtual ~MainWindow();
+    DigitalClockWindow(LVGLDisplayDriver& driver);
+    virtual ~DigitalClockWindow();
 
     void draw() override;
 
@@ -24,4 +24,4 @@ private:
     void setTxtBattPc();
 };
 
-#endif // MAINWINDOW_H
+#endif // DIGITALCLOCKWINDOW_H

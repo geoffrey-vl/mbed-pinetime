@@ -1,9 +1,6 @@
-#include "mainwindow.h"
+#include "digitalclockwindow.h"
 
 #include "lv_disp.h"
-#include "lv_theme.h"
-#include "lv_theme_nemo.h"
-
 #include "lv_label.h"
 
 #include <iostream>
@@ -15,7 +12,7 @@
 
 
 
-MainWindow::MainWindow(LVGLDisplayDriver& driver) : 
+DigitalClockWindow::DigitalClockWindow(LVGLDisplayDriver& driver) : 
     BaseWindow(),
     icBatt(nullptr),
     lblBatt(nullptr),
@@ -25,17 +22,6 @@ MainWindow::MainWindow(LVGLDisplayDriver& driver) :
     vbattpc(0),
     isCharging(false)
 {
-    // initialize LVGL
-    lvgl.init();
-	lvgl.add_display_driver(driver);
-	lvgl.set_default_display(driver);
-
-    // set the default theme to monochromatic
-	lv_theme_t* theme = lv_theme_nemo_init(0, NULL);
-	lv_theme_set_current(theme);
-
-    lvgl.start();
-
     // battery icon
     icBatt = lv_label_create(lv_scr_act(), NULL);
     static lv_style_t lbl_style_pinetimefonts16;
@@ -70,7 +56,7 @@ MainWindow::MainWindow(LVGLDisplayDriver& driver) :
     setTxtDateTime();
 }
 
-MainWindow::~MainWindow()
+DigitalClockWindow::~DigitalClockWindow()
 {
     lv_obj_del(lblDay);
     lv_obj_del(lblTime);
@@ -78,7 +64,7 @@ MainWindow::~MainWindow()
     lv_obj_del(icBatt);
 }
 
-void MainWindow::draw()
+void DigitalClockWindow::draw()
 {
     //get new time, check charging feedback
     time_t now = time(0);
@@ -102,14 +88,14 @@ void MainWindow::draw()
     BaseWindow::draw();
 }
 
-void MainWindow::setTxtDateTime()
+void DigitalClockWindow::setTxtDateTime()
 {
     tm *localTm = localtime(&currentTime);
     lv_label_set_text_fmt(lblTime, "%02d:%02d", localTm->tm_hour, localTm->tm_min); 
     lv_label_set_text_fmt(lblDay, "%02d/%02d/%04d", (localTm->tm_mday), (localTm->tm_mon+1), (localTm->tm_year+1900)); 
 }
 
-void MainWindow::setTxtBattPc()
+void DigitalClockWindow::setTxtBattPc()
 {
     lv_label_set_text_fmt(lblBatt, "%02d%%", vbattpc);
 

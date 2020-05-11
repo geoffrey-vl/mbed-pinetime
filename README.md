@@ -1,6 +1,6 @@
 # mbed-pinetime
 
-![Pinetime demo](doc/pictureoritdidnthappen.jpg)
+![Digital clock](doc/digitalclock.jpg) ![Analog clock demo](doc/analogclock.jpg)
 
 ## Getting Started
 

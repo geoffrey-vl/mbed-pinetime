@@ -1,4 +1,5 @@
 {
+  "name": "mbed-pinetime",
   "macros": [
   ],
   "target_overrides": {
@@ -18,10 +19,17 @@
       "mbed-lvgl.color_depth": 16,
       "mbed-lvgl.color_16_swap": 1,
 	    "mbed-lvgl.antialias": 0,
-	    "mbed-lvgl.use_theme_nemo": 1,
+	    "mbed-lvgl.use_theme_alien": 1,
 	    "mbed-lvgl.enable_canvas": 0,
       "mbed-lvgl.enable_font_roboto_16": 1,
 	    "mbed-lvgl.default_font": "&lv_font_roboto_16"
+    }
+  },
+  "config": {
+    "enable_analogclock": {
+      "help": "Enable analogclock objects",
+      "macro_name": "LV_USE_ANALOGCLOCK",
+      "value": 1
     }
   }
 }

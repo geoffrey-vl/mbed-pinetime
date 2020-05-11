@@ -1,11 +1,15 @@
 #include "mbed.h"
 
-#include "mainwindow.h"
+#include "digitalclockwindow.h"
+#include "analogclockwindow.h"
 
 #include <LittlevGL.h>
 #include "ST7789LVGL.h"
 #include "SPI4Wire.h"
 #include "peripherals.h"
+
+#include "lv_theme.h"
+#include "lv_theme_alien.h"
 
 #include "gcc_timestamp.h"
 
@@ -31,14 +35,25 @@ int main()
 	lcd.display_on();
 	Peripherals::backlight.setBrightness(Brightness::HIGH);
 
-	MainWindow mainwindow(lcd);
+	// initialize LVGL
+	LittlevGL& lvgl = LittlevGL::get_instance();
+    lvgl.init();
+	lvgl.add_display_driver(lcd);
+	lvgl.set_default_display(lcd);
+    // set the default theme to monochromatic
+	lv_theme_t* theme = lv_theme_alien_init(0, NULL);
+	lv_theme_set_current(theme);
+    lvgl.start();
+
+	//BaseWindow* window = new DigitalClockWindow(lcd);
+	BaseWindow* window = new AnalogClockWindow(lcd);
 
 	bool isPushBtnHigh = Peripherals::pushButton.isHigh();
 	time_t tsPushBtnHigh = time(0);
 
 	while(true)
 	{
-		mainwindow.draw();
+		window->draw();
 		ThisThread::sleep_for(10);
 
 		//control brightness on/off through pushbutton
@@ -54,6 +69,8 @@ int main()
 			//btn didn't change state, but display is still on after 10 seconds?
 			if(Peripherals::backlight.brightness() != Brightness::OFF && (time(0) > (tsPushBtnHigh+10)) ) {
 				Peripherals::backlight.setBrightness(Brightness::OFF);
+				//delete window;
+				//window = new AnalogClockWindow(lcd);
 			}
 		}
 	}
