@@ -81,3 +81,29 @@ Here is a good guide: [Advanced Topic: Remove nRF52 Flash Protection With Raspbe
 
 Here is a good guide on how to flash your Pinetime using an ST-Link probe:
 [Flashing your PineTime using an ST-Link and OpenOCD]([https://link](https://dev.to/aaronc81/flashing-your-pinetime-using-an-st-link-and-openocd-54dd))
+
+With your self-compiled version of OpenOCD:
+
+```bash
+./src/openocd -s tcl -f nrf52.cfg -d3
+```
+
+In a second terminal, start a telnet session to your OpenOCD server:
+
+```bash
+telnet localhost 4444
+```
+
+In that telnet session you can use following commands:
+
+- stop execution:
+
+    ```bash
+    reset halt
+    ```
+
+- flash:
+
+    ```bash
+    program path_to_your_workspace/mbed-pinetime/BUILD/PINETIME_DEV_KIT/GCC_ARM-DEBUG/mbed-pinetime.hex verify reset
+    ```
