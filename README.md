@@ -61,7 +61,7 @@ mbed compile -m NRF52_DK -t GCC_ARM
 
 - [ ] BMA421 Accelerometer
 - [ ] HRS3300 Heart Rate Sensor
-- [ ] Hynitron CST816S Touch Pad
+- [x] Hynitron CST816S Touch Pad
 - [x] Sitronix ST7789V LCD Driver
 - [ ] Macronix SPI Flash
 - [ ] Vibrator

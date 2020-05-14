@@ -13,11 +13,12 @@ enum class Brightness {
 class BacklightController
 {
 public:
-    BacklightController();
+    BacklightController(PinName backlighLow, PinName backlighMid, PinName backlighHigh);
     virtual ~BacklightController();
 
     Brightness brightness() { return mBrightness; }
     void setBrightness(Brightness brightness);
+    void cycleBrightness();
     
 private:
     mbed::DigitalOut mSlBrightnessLow;

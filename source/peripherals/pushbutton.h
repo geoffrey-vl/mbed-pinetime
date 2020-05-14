@@ -1,8 +1,9 @@
 #ifndef PUSHBUTTON_H
 #define PUSHBUTTON_H
 
-#include "DigitalIn.h"
+#include "InterruptIn.h"
 #include "DigitalOut.h"
+#include "platform/Callback.h"
 
 class PushButton
 {
@@ -11,10 +12,15 @@ public:
     virtual ~PushButton();
 
     bool isHigh();
+    void setCallBack(mbed::Callback<void(bool)> touch_event_callback);
 
 private:
-    mbed::DigitalIn button;
-    mbed::DigitalOut btnEnable;
+    mbed::InterruptIn _button;
+    mbed::DigitalOut _btnEnable;
+    mbed::Callback<void(bool)> _touch_event_callback;
+
+    void onRiseInterrupt();
+    void onFallInterrupt();
 };
 
 #endif // PUSHBUTTON_H

@@ -12,7 +12,7 @@
 
 
 
-DigitalClockWindow::DigitalClockWindow(LVGLDisplayDriver& driver) : 
+DigitalClockWindow::DigitalClockWindow() : 
     BaseWindow(),
     icBatt(nullptr),
     lblBatt(nullptr),

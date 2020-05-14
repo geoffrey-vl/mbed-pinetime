@@ -6,7 +6,7 @@
 class DigitalClockWindow : public BaseWindow
 {
 public:
-    DigitalClockWindow(LVGLDisplayDriver& driver);
+    DigitalClockWindow();
     virtual ~DigitalClockWindow();
 
     void draw() override;

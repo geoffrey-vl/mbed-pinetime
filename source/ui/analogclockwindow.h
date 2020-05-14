@@ -6,7 +6,7 @@
 class AnalogClockWindow : public BaseWindow
 {
 public:
-    AnalogClockWindow(LVGLDisplayDriver& driver);
+    AnalogClockWindow();
     virtual ~AnalogClockWindow();
 
     void draw() override;

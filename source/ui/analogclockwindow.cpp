@@ -11,7 +11,7 @@
 #include <iostream>
 #include <ctime>
 
-AnalogClockWindow::AnalogClockWindow(LVGLDisplayDriver& driver) : 
+AnalogClockWindow::AnalogClockWindow() : 
     BaseWindow(),
     icBatt(nullptr),
     analogClock(nullptr),
