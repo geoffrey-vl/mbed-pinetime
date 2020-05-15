@@ -1,4 +1,4 @@
-apps/*
+old/*
 drivers/*
 mbed-os/features/cellular/*
 mbed-os/features/lwipstack/*
