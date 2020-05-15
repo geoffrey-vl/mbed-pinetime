@@ -80,7 +80,7 @@ Here is a good guide: [Advanced Topic: Remove nRF52 Flash Protection With Raspbe
 ### Flashing using OpenOcd and ST-LINK
 
 Here is a good guide on how to flash your Pinetime using an ST-Link probe:
-[Flashing your PineTime using an ST-Link and OpenOCD]([https://link](https://dev.to/aaronc81/flashing-your-pinetime-using-an-st-link-and-openocd-54dd))
+[Flashing your PineTime using an ST-Link and OpenOCD](https://dev.to/aaronc81/flashing-your-pinetime-using-an-st-link-and-openocd-54dd).
 
 With your self-compiled version of OpenOCD:
 
