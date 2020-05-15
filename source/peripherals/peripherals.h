@@ -14,7 +14,7 @@
 namespace Peripherals {
     //busses
     extern mbed::I2C i2c;
-    extern SPI4Wire display_interface;
+    extern SPI4Wire spiDisplayInterface;
 
     //peripherals
     extern ST7789LVGL lcd;

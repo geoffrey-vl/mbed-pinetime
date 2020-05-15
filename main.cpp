@@ -70,6 +70,8 @@ bool my_input_read(lv_indev_drv_t* drv, lv_indev_data_t* data)
 int main()
 {
 	Peripherals::i2c.frequency(400000);
+	Peripherals::spiDisplayInterface.frequency(8000000);
+	Peripherals::spiDisplayInterface.format(8,3);
 
 	initRtc();
 	Peripherals::touchPad.init();
@@ -77,7 +79,7 @@ int main()
 	Peripherals::lcd.init();
 	ThisThread::sleep_for(100);
 	Peripherals::lcd.display_on();
-	Peripherals::backlight.setBrightness(Brightness::LOW);
+	Peripherals::backlight.setBrightness(Brightness::HIGH);
 
 	// initialize LVGL
 	LittlevGL& lvgl = LittlevGL::get_instance();
