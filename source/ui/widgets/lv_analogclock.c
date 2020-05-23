@@ -348,11 +348,11 @@ static void lv_analogclock_draw_needle(lv_obj_t * analogclock, const lv_area_t *
         int16_t value = ext->values[i];
         lv_coord_t r = 0;
         if(i==LV_ANALOGCLOCK_NEEDLE_HOURS) {
-            value = value * 30;
+            value = value * 30; //in 360 degrees we can fit 30 times 12h
             r = (lv_obj_get_width(analogclock) / 2 - style->body.padding.left) /2;
         }
         else {
-            value = value * 6;
+            value = value * 6; //in 360 degrees we can fit 6 times 60 minutes/seconds
             r = lv_obj_get_width(analogclock) / 2 - style->body.padding.left;
         }
 
@@ -402,10 +402,11 @@ static void lv_analogclock_draw_needle(lv_obj_t * analogclock, const lv_area_t *
     style_neddle_mid.body.radius     = LV_RADIUS_CIRCLE;
 
     lv_area_t nm_cord;
-    nm_cord.x1 = x_ofs - style->body.radius;
-    nm_cord.y1 = y_ofs - style->body.radius;
-    nm_cord.x2 = x_ofs + style->body.radius;
-    nm_cord.y2 = y_ofs + style->body.radius;
+    lv_coord_t radius_middle_area = style->body.radius/3;
+    nm_cord.x1 = x_ofs - radius_middle_area;
+    nm_cord.y1 = y_ofs - radius_middle_area;
+    nm_cord.x2 = x_ofs + radius_middle_area;
+    nm_cord.y2 = y_ofs + radius_middle_area;
 
     lv_draw_rect(&nm_cord, mask, &style_neddle_mid, lv_obj_get_opa_scale(analogclock));
 }
