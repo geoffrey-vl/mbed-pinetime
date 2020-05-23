@@ -9,14 +9,14 @@ public:
     ConfigurationWindow();
     virtual ~ConfigurationWindow();
 
-    void onItemSelected();
+    void onItemSelected(int32_t selectedItem);
 
     uint16_t selectedId() { return mSelectedItem; }
 
 private:
-    lv_obj_t * lstClocks;
+    lv_obj_t * lstSubmenu;
     lv_obj_t * lblTitle;
-    uint16_t mSelectedItem;
+    int32_t mSelectedItem;
 };
 
 #endif // CONFIGURATIONWINDOW_H
