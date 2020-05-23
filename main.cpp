@@ -8,7 +8,7 @@
 #include "peripherals.h"
 
 #include "lv_theme.h"
-#include "lv_theme_alien.h"
+#include "lv_theme_night.h"
 
 #include "gcc_timestamp.h"
 
@@ -87,7 +87,7 @@ int main()
 	lvgl.add_display_driver(Peripherals::lcd);
 	lvgl.set_default_display(Peripherals::lcd);
     // set the default theme
-	lv_theme_t* theme = lv_theme_alien_init(0, NULL);
+	lv_theme_t* theme = lv_theme_night_init(0, NULL);
 	lv_theme_set_current(theme);
 
 	// hook in touch driver
