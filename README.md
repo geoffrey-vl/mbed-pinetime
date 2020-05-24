@@ -7,19 +7,7 @@
 Install dependencies:
 
 - python3
-- c/c++ compiler, prefereable the GNU GCC compiler version 9
-
-Optionally, install `nrfjprog`
-
-- MAC:
-
-    ```bash
-    brew cask install nordic-nrf-command-line-tools
-    ```
-
-- Linux
-
-    TODO
+- c/c++ compiler, preferable the GNU GCC compiler version 9
 
 ## Getting the source code
 
@@ -30,7 +18,7 @@ mbed import git@github.com:geoffrey-vl/mbed-pinetime.git
 You can off course also clone the repo manually using git, and next issue `mbed deploy`
 to pull the submodules.
 
-The mbed toolchain requires Python and some additional python packes which don't come
+The mbed toolchain requires Python and some additional python packages which don't come
 with the default Python installation. To install the additional packages:
 
 Install all the Python packages required for Mbed. Your options are:
