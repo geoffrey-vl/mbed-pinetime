@@ -7,7 +7,7 @@
 #include "backlightcontroller.h"
 #include "batterymonitor.h"
 #include "pushbutton.h"
-#include "CST0xx.h"
+#include "CST816S.h"
 #include "ST7789LVGL.h"
 
 
@@ -21,7 +21,7 @@ namespace Peripherals {
     extern BacklightController backlight;
     extern BatteryMonitor batteryMonitor;
     extern PushButton pushButton;
-    extern CST0xx touchPad;
+    extern CST816S touchPad;
 };
 
 #endif // PERIPHERALS_H

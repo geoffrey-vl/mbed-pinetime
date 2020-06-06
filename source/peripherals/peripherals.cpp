@@ -9,4 +9,4 @@ ST7789LVGL Peripherals::lcd(Peripherals::spiDisplayInterface, PIN_LCD_RESET_OUT)
 BacklightController Peripherals::backlight(LCD_BACKLIGHT_LOW, LCD_BACKLIGHT_MID, LCD_BACKLIGHT_HIGH);
 BatteryMonitor Peripherals::batteryMonitor(BATTERY_VOLTAGE, PIN_CHARGE_INDICATION_IN);
 PushButton Peripherals::pushButton(PIN_PUSH_BUTTON_IN, PIN_PUSH_BUTTON_OUT);
-CST0xx Peripherals::touchPad(&Peripherals::i2c, PIN_TOUCHPAD_INTERRUPT, PIN_TOUCHPAD_RESET_OUT);
+CST816S Peripherals::touchPad(&Peripherals::i2c, PIN_TOUCHPAD_INTERRUPT, PIN_TOUCHPAD_RESET_OUT);

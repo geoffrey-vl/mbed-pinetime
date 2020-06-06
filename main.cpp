@@ -31,11 +31,30 @@ void initRtc() {
 }
 
 
-void on_touch_event(struct CST0xx::ts_event event)
+void on_touch_event(std::vector<CST816S::TouchInfo> eventData)
 {
-	touchpoint.x = (lv_coord_t)event.x;
-	touchpoint.y = (lv_coord_t)event.y;
+	if(eventData.size() < 1) //has samples
+		return;
+	CST816S::TouchInfo touchEvent = eventData[0]; //take only first data sample
+	touchpoint.x = (lv_coord_t)touchEvent.x;
+	touchpoint.y = (lv_coord_t)touchEvent.y;
+
+	/**
+	 * Touch event happened. Normally we would try to
+	 * resolve the touch action from the touch controller.
+	 * Code:
+	 * if(touchEvent.action == CST816S::Action::Up)
+	 *     touchstate = LV_INDEV_STATE_REL;
+	 * else
+	 *     touchstate = LV_INDEV_STATE_PR;
+	 * 
+	 * However that doesn't seem to work so reliable.
+	 * As an alternative we toggle the pressed/released
+	 * states ourselves here and in lvgl's input handler 
+	 * (i.e. my_input_read())
+	 */
 	touchstate = LV_INDEV_STATE_PR;
+
 	buttonTimestamp = time(0);
 }
 
@@ -69,6 +88,7 @@ bool my_input_read(lv_indev_drv_t* drv, lv_indev_data_t* data)
 
 int main()
 {
+	printf("############# BOOT ############\n");
 	Peripherals::i2c.frequency(400000);
 	Peripherals::spiDisplayInterface.frequency(8000000);
 	Peripherals::spiDisplayInterface.format(8,3);
