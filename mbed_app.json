@@ -4,6 +4,7 @@
   ],
   "target_overrides": {
     "*": {
+      "mbed-segger-rtt.override_console": true,
       "mbed-trace.enable": 0
     },
     "PINETIME_DEV_KIT": {
