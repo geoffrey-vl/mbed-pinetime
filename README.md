@@ -2,6 +2,8 @@
 
 <img src="doc/digitalclock.jpg" alt="digital clock" width="250px"/> <img src="doc/analogclock.jpg" alt="analog clock" width="250px"/>
 
+<img src="doc/menu.jpg" alt="config menu" width="250px"/> <img src="doc/systeminfo.jpg" alt="system info" width="250px"/>
+
 ## Getting Started
 
 Install dependencies:
@@ -47,6 +49,8 @@ mbed compile -m NRF52_DK -t GCC_ARM
 
 ## Development Notes
 
+- [x] Mbed-os RTOS
+- [x] LVGL graphics library
 - [ ] BMA421 Accelerometer
 - [ ] HRS3300 Heart Rate Sensor
 - [x] Hynitron CST816S Touch Pad
