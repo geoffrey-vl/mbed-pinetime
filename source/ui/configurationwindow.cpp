@@ -16,6 +16,7 @@ static void my_event_cb(lv_obj_t * obj, lv_event_t event)
 ConfigurationWindow::ConfigurationWindow() : 
     BaseWindow(),
     lstSubmenu(nullptr),
+    lblTitle(nullptr),
     mSelectedItem(0)
 {
     lblTitle = lv_label_create(lv_scr_act(), NULL);
@@ -71,6 +72,9 @@ ConfigurationWindow::ConfigurationWindow() :
     lv_obj_set_user_data(btn, (lv_obj_user_data_t)this); 
     lv_obj_set_event_cb(btn, my_event_cb);
     btn = lv_list_add_btn(lstSubmenu, nullptr, "Watch faces");
+    lv_obj_set_user_data(btn, (lv_obj_user_data_t)this); 
+    lv_obj_set_event_cb(btn, my_event_cb);
+    btn = lv_list_add_btn(lstSubmenu, nullptr, "System info");
     lv_obj_set_user_data(btn, (lv_obj_user_data_t)this); 
     lv_obj_set_event_cb(btn, my_event_cb);
     btn = lv_list_add_btn(lstSubmenu, LV_SYMBOL_LEFT, "Back");
